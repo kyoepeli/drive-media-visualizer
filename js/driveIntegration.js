@@ -1,6 +1,6 @@
 // Google Drive Integration
 const GOOGLE_DRIVE_API_KEY = 'YOUR_API_KEY_HERE';
-const GOOGLE_CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
+const GOOGLE_CLIENT_ID = '1074330780143-77itn8ua8u66enk3dijnu6osuka5hmsf.apps.googleusercontent.com';
 
 class DriveIntegration {
     constructor() {

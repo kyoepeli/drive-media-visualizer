@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Media Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Player View -->
+        <div id="playerView" class="view active">
+            <div class="player-container">
+                <div class="canvas-wrapper">
+                    <canvas id="visualCanvas"></canvas>
+                    <div id="videoContainer" style="display: none;"></div>
+                </div>
+                <div class="controls">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                        <input type="range" id="progressSlider" min="0" max="100" value="0">
+                    </div>
+                    <div class="control-buttons">
+                        <button id="playPauseBtn" class="btn">▶</button>
+                        <button id="stopBtn" class="btn">⏹</button>
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                        </div>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="70" class="volume-slider">
+                        <button id="adminToggle" class="btn">⚙️</button>
+                    </div>
+                </div>
+            </div>
+            <div class="playlist">
+                <h3>Playlist</h3>
+                <div id="playlistItems" class="playlist-items"></div>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminView" class="view">
+            <div class="admin-container">
+                <h1>Admin Panel</h1>
+                
+                <div class="admin-section">
+                    <h2>Google Drive Setup</h2>
+                    <button id="authorizeBtn" class="btn btn-primary">Authorize Google Drive</button>
+                    <div id="authStatus" class="auth-status"></div>
+                </div>
+
+                <div class="admin-section">
+                    <h2>Visual Engine Algorithm</h2>
+                    <select id="visualAlgorithm" class="input-field">
+                        <option value="rotoZoom">Roto-Zoom</option>
+                        <option value="tunnel">Tunnel Effect</option>
+                        <option value="wave">Wave Distortion</option>
+                        <option value="kaleidoscope">Kaleidoscope</option>
+                        <option value="vhs">VHS Glitch</option>
+                    </select>
+                    <label>
+                        <input type="checkbox" id="showWaveform" checked> Show Waveform
+                    </label>
+                    <label>
+                        <input type="checkbox" id="showBars"> Show Frequency Bars
+                    </label>
+                </div>
+
+                <div class="admin-section">
+                    <h2>Manage Content</h2>
+                    <button id="syncLinksBtn" class="btn btn-primary">Sync Links from Google Page</button>
+                    <div id="syncStatus" class="status-message"></div>
+                </div>
+
+                <div class="admin-section">
+                    <h2>Content Items</h2>
+                    <input type="text" id="searchContent" class="input-field" placeholder="Search content...">
+                    <div id="contentList" class="content-list"></div>
+                </div>
+
+                <button id="backBtn" class="btn btn-secondary">Back to Player</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for audio files -->
+    <audio id="audioPlayer"></audio>
+
+    <script src="js/driveIntegration.js"></script>
+    <script src="js/visualEngine.js"></script>
+    <script src="js/app.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>
